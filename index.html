@@ -18,11 +18,18 @@
         -moz-osx-font-smoothing: grayscale;
         background-color: #ffffff;
         color: #0f172a;
-        cursor: auto; /* Default to auto to avoid mobile usability issues */
       }
+      /* Hide custom cursor by default on all devices to ensure no early white screen blocks */
+      #nexoft-lens, #nexoft-lens-aura {
+        display: none;
+      }
+      /* Enable custom cursor only on desktop/pointing devices */
       @media (pointer: fine) {
         body {
-          cursor: none; /* Only hide cursor on devices with a mouse */
+          cursor: none;
+        }
+        #nexoft-lens, #nexoft-lens-aura {
+          display: block;
         }
       }
       .rtl {
@@ -46,17 +53,11 @@
       }
       ::-webkit-scrollbar-thumb {
         background: #e2e8f0;
-        border-radius: 0px;
-      }
-      ::-webkit-scrollbar-thumb:hover {
-        background: #0f172a;
       }
       ::selection {
         background: #2563eb;
         color: #ffffff;
       }
-
-      /* Tactile Noise Overlay */
       body::before {
         content: "";
         position: fixed;
@@ -69,8 +70,6 @@
         opacity: 0.05;
         background-image: url("https://grainy-gradients.vercel.app/noise.svg");
       }
-
-      /* Nexoft Lens Cursor Utility */
       #nexoft-lens {
         width: 12px;
         height: 12px;
@@ -79,9 +78,7 @@
         position: fixed;
         pointer-events: none;
         z-index: 10000;
-        mix-blend-mode: normal;
-        display: none; /* Hidden by default, shown on interaction */
-        transition: transform 0.08s ease-out, width 0.3s cubic-bezier(0.16, 1, 0.3, 1), height 0.3s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s;
+        transition: transform 0.08s ease-out, width 0.3s cubic-bezier(0.16, 1, 0.3, 1), height 0.3s cubic-bezier(0.16, 1, 0.3, 1);
       }
       #nexoft-lens-aura {
         width: 40px;
@@ -93,120 +90,58 @@
         position: fixed;
         pointer-events: none;
         z-index: 9999;
-        display: none;
-        transition: transform 0.15s ease-out, width 0.4s cubic-bezier(0.16, 1, 0.3, 1), height 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        transition: transform 0.15s ease-out;
       }
-
       .glass-card {
         background: rgba(255, 255, 255, 0.7);
         backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
         border: 1px solid rgba(15, 23, 42, 0.05);
       }
-      
       .glass-card-dark {
         background: rgba(15, 23, 42, 0.85);
         backdrop-filter: blur(30px);
-        -webkit-backdrop-filter: blur(30px);
         border: 1px solid rgba(255, 255, 255, 0.1);
       }
-
-      .no-scrollbar::-webkit-scrollbar {
-        display: none;
-      }
-      .no-scrollbar {
-        -ms-overflow-style: none;
-        scrollbar-width: none;
-      }
-
-      @keyframes scanline {
-        0% { transform: translateY(-100%); }
-        100% { transform: translateY(100%); }
-      }
-      .scanline-effect::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(to bottom, transparent, rgba(37, 99, 235, 0.05), transparent);
-        height: 50%;
-        width: 100%;
-        animation: scanline 8s linear infinite;
-        pointer-events: none;
-      }
     </style>
-  <script type="importmap">
-{
-  "imports": {
-    "@google/genai": "https://esm.sh/@google/genai@^1.35.0",
-    "framer-motion": "https://esm.sh/framer-motion@^12.26.2",
-    "react/": "https://esm.sh/react@^19.2.3/",
-    "react": "https://esm.sh/react@^19.2.3",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
-    "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
-    "react-router-dom": "https://esm.sh/react-router-dom@^7.12.0"
-  }
-}
-</script>
-</head>
+    <script>
+      // Global process shim to prevent 'process is not defined' errors
+      window.process = window.process || { env: { API_KEY: '' } };
+    </script>
+    <script type="importmap">
+    {
+      "imports": {
+        "@google/genai": "https://esm.sh/@google/genai@^1.35.0",
+        "framer-motion": "https://esm.sh/framer-motion@^12.26.2",
+        "react/": "https://esm.sh/react@^19.2.3/",
+        "react": "https://esm.sh/react@^19.2.3",
+        "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+        "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
+        "react-router-dom": "https://esm.sh/react-router-dom@^7.12.0"
+      }
+    }
+    </script>
+  </head>
   <body class="bg-white text-slate-900 overflow-x-hidden">
     <div id="root"></div>
     <div id="nexoft-lens"></div>
     <div id="nexoft-lens-aura"></div>
-    
-    <!-- Restore Application Entry Point -->
     <script type="module" src="./index.tsx"></script>
-
     <script>
       const lens = document.getElementById('nexoft-lens');
       const aura = document.getElementById('nexoft-lens-aura');
-
-      const updatePosition = (x, y, target) => {
-        lens.style.display = 'block';
-        aura.style.display = 'block';
-        
-        lens.style.transform = `translate3d(${x - (lens.offsetWidth/2)}px, ${y - (lens.offsetHeight/2)}px, 0)`;
-        aura.style.transform = `translate3d(${x - (aura.offsetWidth/2)}px, ${y - (aura.offsetHeight/2)}px, 0)`;
-        
-        if (target && (target.closest('a') || target.closest('button') || target.tagName === 'INPUT' || target.tagName === 'TEXTAREA')) {
-          lens.style.width = '30px';
-          lens.style.height = '30px';
-          lens.style.background = 'rgba(37, 99, 235, 0.3)';
-          lens.style.backdropFilter = 'blur(4px)';
-          aura.style.width = '60px';
-          aura.style.height = '60px';
-        } else {
-          lens.style.width = '12px';
-          lens.style.height = '12px';
-          lens.style.background = '#2563eb';
-          lens.style.backdropFilter = 'none';
-          aura.style.width = '40px';
-          aura.style.height = '40px';
-        }
-      };
-
-      document.addEventListener('mousemove', (e) => {
-        updatePosition(e.clientX, e.clientY, e.target);
-      });
-
-      document.addEventListener('touchstart', (e) => {
-        const touch = e.touches[0];
-        updatePosition(touch.clientX, touch.clientY, e.target);
-      }, { passive: true });
-
-      document.addEventListener('touchmove', (e) => {
-        const touch = e.touches[0];
-        updatePosition(touch.clientX, touch.clientY, e.target);
-      }, { passive: true });
-
-      document.addEventListener('mousedown', () => {
-        lens.style.transform += ' scale(0.8)';
-        aura.style.transform += ' scale(1.5)';
-      });
-
-      document.addEventListener('mouseup', () => {
-        lens.style.transform = lens.style.transform.replace(' scale(0.8)', '');
-        aura.style.transform = aura.style.transform.replace(' scale(1.5)', '');
-      });
+      if (lens && aura) {
+        document.addEventListener('mousemove', (e) => {
+          lens.style.transform = `translate3d(${e.clientX - 6}px, ${e.clientY - 6}px, 0)`;
+          aura.style.transform = `translate3d(${e.clientX - 20}px, ${e.clientY - 20}px, 0)`;
+          const target = e.target;
+          if (target && target.closest && (target.closest('a') || target.closest('button'))) {
+            lens.style.width = '30px'; lens.style.height = '30px';
+            lens.style.transform = `translate3d(${e.clientX - 15}px, ${e.clientY - 15}px, 0)`;
+          } else {
+            lens.style.width = '12px'; lens.style.height = '12px';
+          }
+        });
+      }
     </script>
   </body>
 </html>
