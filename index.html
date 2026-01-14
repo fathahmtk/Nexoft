@@ -18,7 +18,12 @@
         -moz-osx-font-smoothing: grayscale;
         background-color: #ffffff;
         color: #0f172a;
-        cursor: none; /* Hide default cursor for Nexoft Lens */
+        cursor: auto; /* Default to auto to avoid mobile usability issues */
+      }
+      @media (pointer: fine) {
+        body {
+          cursor: none; /* Only hide cursor on devices with a mouse */
+        }
       }
       .rtl {
         direction: rtl;
@@ -75,6 +80,7 @@
         pointer-events: none;
         z-index: 10000;
         mix-blend-mode: normal;
+        display: none; /* Hidden by default, shown on interaction */
         transition: transform 0.08s ease-out, width 0.3s cubic-bezier(0.16, 1, 0.3, 1), height 0.3s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s;
       }
       #nexoft-lens-aura {
@@ -87,6 +93,7 @@
         position: fixed;
         pointer-events: none;
         z-index: 9999;
+        display: none;
         transition: transform 0.15s ease-out, width 0.4s cubic-bezier(0.16, 1, 0.3, 1), height 0.4s cubic-bezier(0.16, 1, 0.3, 1);
       }
 
@@ -145,27 +152,28 @@
     <div id="root"></div>
     <div id="nexoft-lens"></div>
     <div id="nexoft-lens-aura"></div>
+    
+    <!-- Restore Application Entry Point -->
+    <script type="module" src="./index.tsx"></script>
+
     <script>
       const lens = document.getElementById('nexoft-lens');
       const aura = document.getElementById('nexoft-lens-aura');
 
-      document.addEventListener('mousemove', (e) => {
-        const x = e.clientX;
-        const y = e.clientY;
-        lens.style.transform = `translate3d(${x - 6}px, ${y - 6}px, 0)`;
-        aura.style.transform = `translate3d(${x - 20}px, ${y - 20}px, 0)`;
+      const updatePosition = (x, y, target) => {
+        lens.style.display = 'block';
+        aura.style.display = 'block';
         
-        // Interaction with links/buttons
-        const target = e.target;
-        if (target.closest('a') || target.closest('button') || target.tagName === 'INPUT' || target.tagName === 'TEXTAREA') {
+        lens.style.transform = `translate3d(${x - (lens.offsetWidth/2)}px, ${y - (lens.offsetHeight/2)}px, 0)`;
+        aura.style.transform = `translate3d(${x - (aura.offsetWidth/2)}px, ${y - (aura.offsetHeight/2)}px, 0)`;
+        
+        if (target && (target.closest('a') || target.closest('button') || target.tagName === 'INPUT' || target.tagName === 'TEXTAREA')) {
           lens.style.width = '30px';
           lens.style.height = '30px';
-          lens.style.transform = `translate3d(${x - 15}px, ${y - 15}px, 0)`;
           lens.style.background = 'rgba(37, 99, 235, 0.3)';
           lens.style.backdropFilter = 'blur(4px)';
           aura.style.width = '60px';
           aura.style.height = '60px';
-          aura.style.transform = `translate3d(${x - 30}px, ${y - 30}px, 0)`;
         } else {
           lens.style.width = '12px';
           lens.style.height = '12px';
@@ -174,7 +182,21 @@
           aura.style.width = '40px';
           aura.style.height = '40px';
         }
+      };
+
+      document.addEventListener('mousemove', (e) => {
+        updatePosition(e.clientX, e.clientY, e.target);
       });
+
+      document.addEventListener('touchstart', (e) => {
+        const touch = e.touches[0];
+        updatePosition(touch.clientX, touch.clientY, e.target);
+      }, { passive: true });
+
+      document.addEventListener('touchmove', (e) => {
+        const touch = e.touches[0];
+        updatePosition(touch.clientX, touch.clientY, e.target);
+      }, { passive: true });
 
       document.addEventListener('mousedown', () => {
         lens.style.transform += ' scale(0.8)';
