@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
-    <title>Nexoft | Global Social Marketing Enterprise</title>
+    <title>AURA - AI-Powered Personal Growth Platform</title>
     <script>
       // CRITICAL: Global process shim must be defined before any other modules load
       window.process = { env: { API_KEY: '' } };
@@ -82,22 +82,30 @@
       #nexoft-lens {
         width: 12px;
         height: 12px;
-        background: #2563eb;
+        background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%);
         border-radius: 50%;
         position: fixed;
         z-index: 10000;
         transition: transform 0.08s ease-out, width 0.3s cubic-bezier(0.16, 1, 0.3, 1), height 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
       }
       #nexoft-lens-aura {
         width: 40px;
         height: 40px;
-        border: 1px solid rgba(37, 99, 235, 0.2);
-        background: rgba(37, 99, 235, 0.05);
+        border: 1px solid rgba(139, 92, 246, 0.2);
+        background: rgba(139, 92, 246, 0.05);
         backdrop-filter: blur(2px);
         border-radius: 50%;
         position: fixed;
         z-index: 9999;
         transition: transform 0.15s ease-out;
+      }
+
+      .dark ::-webkit-scrollbar-track {
+        background: #0f172a;
+      }
+      .dark ::-webkit-scrollbar-thumb {
+        background: #475569;
       }
 
       .glass-card {
