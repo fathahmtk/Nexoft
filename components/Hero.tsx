@@ -27,12 +27,14 @@ const Hero = ({ t, language }: any) => {
       <section className="relative pt-28 pb-16 sm:pt-48 sm:pb-32 overflow-hidden bg-white">
         {/* Refined Professional Background Gradients */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden select-none">
-          {/* Subtle Muted Blue Glow */}
-          <div className="absolute top-[-20%] left-[-10%] w-[70%] h-[80%] bg-blue-100/20 rounded-full blur-[120px]" />
-          {/* Subtle Muted Purple Glow */}
-          <div className="absolute top-[10%] right-[-10%] w-[60%] h-[70%] bg-purple-100/20 rounded-full blur-[140px]" />
-          {/* Light Gray/Slate Haze */}
-          <div className="absolute bottom-[-10%] left-[20%] w-[80%] h-[40%] bg-slate-100/30 rounded-full blur-[100px]" />
+          {/* Softer Muted Sky Blue */}
+          <div className="absolute top-[-15%] left-[-5%] w-[80%] h-[90%] bg-sky-50/40 rounded-full blur-[150px] opacity-60" />
+          {/* Subtle Muted Indigo/Purple */}
+          <div className="absolute top-[5%] right-[-15%] w-[70%] h-[80%] bg-indigo-50/30 rounded-full blur-[160px] opacity-50" />
+          {/* Light Slate Gray Haze */}
+          <div className="absolute bottom-[-15%] left-[10%] w-[90%] h-[50%] bg-slate-50/50 rounded-full blur-[120px] opacity-70" />
+          {/* Minimal Soft Gray Depth */}
+          <div className="absolute top-1/4 left-1/3 w-96 h-96 bg-gray-50/20 rounded-full blur-[100px]" />
         </div>
 
         <div className="max-w-[1600px] mx-auto px-6 sm:px-10 w-full relative z-10">
