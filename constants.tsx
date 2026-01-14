@@ -1,4 +1,3 @@
-
 import { Country } from './types';
 
 export interface ExtendedCountry extends Country {
@@ -31,20 +30,47 @@ export const CONTENT = {
       pricing: 'Pricing',
       contact: 'Contact',
     },
+    hero: {
+      title: 'Strategic Social Media Marketing.',
+      subtitle: 'Nexoft helps businesses build a consistent, professional, and results-focused presence. Social-media-first strategy backed by clean design and business support.',
+      ctaPrimary: 'Get a Quote',
+      ctaSecondary: 'Book a Consultation',
+    },
+    services: {
+      title: 'What We Do',
+      subtitle: 'Structured and practical digital services focused on visibility, engagement, and long-term professional growth.',
+      list: [
+        { id: 'smm', title: 'Social Media Marketing', icon: 'BarChart3', description: 'Account setup, content calendar planning, post & reel creatives, caption strategy, and performance insights. We focus on visibility and engagement.' },
+        { id: 'design', title: 'Website & Graphic Design', icon: 'Layout', description: 'Business websites, landing pages, and brand-aligned creatives. Design that supports marketing consistency and brand credibility.' },
+        { id: 'software', title: 'Software & Tools Guidance', icon: 'Settings', description: 'Practical guidance for choosing CRM, marketing tools, and accounting software. Workflow recommendations and setup training.' },
+        { id: 'accounts', title: 'Accounts Process Advisory', icon: 'FileText', description: 'Guidance on structuring basic invoicing, expense workflows, and reporting formats. Note: Advisory only, no statutory audit.' },
+        { id: 'assistance', title: 'Business Assistance', icon: 'Users', description: 'Operational support including admin, documentation, client coordination, and follow-ups. Scalable support for growing teams.' },
+      ]
+    },
+    pricing: {
+      title: 'Transparent Scalability',
+      subtitle: 'Pricing designed for growth. Packages depend on scope, region, and specific business requirements.',
+      startingFrom: 'From',
+      note: 'Final pricing depends on scope and country. Accounts guidance is strictly advisory.',
+      plans: {
+        starter: 'Starter',
+        growth: 'Growth',
+        authority: 'Authority',
+        features: {
+          starter: ['Account Setup & Optimization', 'Content Calendar Planning', 'Basic Monthly Insights'],
+          growth: ['Expanded Channel Management', 'Higher Frequency Reels/Posts', 'Engagement Strategy'],
+          authority: ['Full Authority Branding', 'Daily Content Cadence', 'Advanced Performance Data'],
+        }
+      }
+    },
     intelligence: {
       title: 'Market Intelligence',
-      badge: 'Real-time Grounding',
-      subtitle: 'Fetch live market trends and competitor insights using Google Search grounding.',
-      placeholder: 'Search for trends (e.g. Luxury real estate trends in 2025)...',
+      badge: 'Live Grounding',
+      subtitle: 'Synthesize live market trends and competitor insights across India, US, and GCC sectors.',
+      placeholder: 'Search for trends (e.g. Retail trends in Dubai 2025)...',
       button: 'Fetch Intelligence',
-      loading: 'Scouring Global Grids...',
-      sources: 'Verified Sources',
-    },
-    hero: {
-      title: 'Global Social Strategy. Enterprise Execution.',
-      subtitle: 'Premium SMM-first agency helping brands scale across India, USA, and the GCC with data-driven creative and strategic advisory.',
-      ctaPrimary: 'Get a Quote',
-      ctaSecondary: 'Our Services',
+      loading: 'Scouring Grids...',
+      sources: 'Sources',
     },
     creative: {
       title: 'Creative Studio',
@@ -61,42 +87,30 @@ export const CONTENT = {
       placeholder: 'Describe the scene movement and mood...',
       button: 'Generate Video',
       loading: 'Synthesizing Frames...',
-      keyWarning: 'High-quality video generation requires a paid API key for Veo models.',
-      selectKey: 'Connect Billing Project',
     },
     lab: {
       title: 'Strategy Lab',
-      badge: 'AI Powered',
-      subtitle: 'Generate a high-level social media growth roadmap instantly.',
-      inputPlaceholder: 'Enter your business niche...',
+      badge: 'Engineering',
+      subtitle: 'Generate a high-level social media growth roadmap based on your specific business niche.',
+      inputPlaceholder: 'Enter your business niche (e.g. Luxury Real Estate)...',
       button: 'Generate Strategy',
-      loading: 'Engineering Vision...',
-      disclaimer: 'Generated insights are for advisory purposes based on current global trends.'
+      loading: 'Architecting Solution...',
+      disclaimer: 'Advisory results based on global trends.'
     },
     stack: {
       title: 'Stack Advisor',
       badge: 'Optimization',
-      subtitle: 'Discover the perfect software stack for your marketing operations.',
+      subtitle: 'Identify the ideal software stack for your team size and operational goals.',
       teamSize: 'Team Size',
-      goal: 'Primary Objective',
-      budget: 'Monthly Budget',
+      goal: 'Objective',
+      budget: 'Budget Range',
       button: 'Analyze Stack',
-      loading: 'Architecting Stack...',
-      disclaimer: 'Recommendations are vendor-neutral and based on operational efficiency.'
-    },
-    concierge: {
-      button: 'Talk to Expert',
-      title: 'Live Strategy Assistant',
-      status: 'Connecting to Nexoft Intelligence...',
-      listening: 'Listening...',
-      speaking: 'Assistant is speaking...',
-      error: 'Microphone access required for voice interaction.',
-      close: 'Close Session'
+      loading: 'Mapping Architecture...',
+      disclaimer: 'Vendor-neutral recommendations.'
     },
     portfolio: {
       title: 'Success Stories',
       subtitle: 'Measurable impact delivered across diverse global industries.',
-      cta: 'View Case Study',
       cases: [
         { 
           id: 'lux-real-estate', 
@@ -124,58 +138,28 @@ export const CONTENT = {
         }
       ]
     },
-    testimonials: [
-      { 
-        quote: "Nexoft didn't just manage our socials; they redefined our entire digital persona for the global market.",
-        author: "CMO",
-        role: "Enterprise Partner"
-      },
-      { 
-        quote: "The efficiency of their remote team is staggering. It feels like having a localized HQ in every target country.",
-        author: "Growth Director",
-        role: "Global Technology Client"
-      }
-    ],
-    services: {
-      title: 'Global Offerings',
-      subtitle: 'Specialized digital solutions for ambitious enterprise brands.',
-      list: [
-        { id: 'smm', title: 'Social Media Marketing', description: 'Comprehensive strategy, content production, and community management focused on ROI. Our teams leverage real-time data to pivot strategies instantly. We ensure your brand remains at the forefront of the global digital conversation.', icon: 'BarChart3' },
-        { id: 'design', title: 'Website & Graphic Design', description: 'Conversion-optimized web experiences and premium brand visual identity systems. We blend high-fashion aesthetics with technical excellence. Our designs are engineered to resonate across diverse cultural landscapes.', icon: 'Layout' },
-        { id: 'software', title: 'Software & Tools Guidance', description: 'Strategic stack selection for CRM, marketing automation, and business ops. We identify the most efficient tools for your specific market needs. Our approach reduces operational friction while maximizing team throughput.', icon: 'Settings' },
-        { id: 'accounts', title: 'Accounts Process Guidance', description: 'Advisory on financial workflows and reporting. Note: We are not a CA firm. We streamline your internal accounting logic to support rapid international scaling.', icon: 'FileText' },
-        { id: 'assistance', title: 'Business Assistance', description: 'High-level virtual support to streamline your executive operations. Our assistants are trained in enterprise-level project management. We provide the operational backbone required for global brand dominance.', icon: 'Users' },
-      ]
-    },
-    pricing: {
-      title: 'Transparent Scalability',
-      subtitle: 'Packages designed for growth across global markets.',
-      startingFrom: 'Starting from',
-      note: 'Regional prices adjusted for market complexity. All accounts guidance is strictly advisory.',
-      plans: {
-        starter: 'Starter',
-        growth: 'Growth',
-        authority: 'Authority',
-        features: {
-          starter: ['3 Social Channels', '12 Posts Monthly', 'Basic Analytics'],
-          growth: ['5 Social Channels', '24 Posts Monthly', 'Ad Management', 'Engagement'],
-          authority: ['Unlimited Channels', 'Daily Content', 'Influencer Outreach', 'Dedicated Manager'],
-        }
-      }
-    },
-    contact: {
-      title: 'Global Partnership',
-      subtitle: 'Connect with our regional experts to initiate your brand scaling.',
-      name: 'Full Name',
-      email: 'Corporate Email',
-      phone: 'Phone Number',
-      service: 'Service Interest',
-      message: 'Project Brief',
-      submit: 'Initiate Inquiry',
-      success: 'Inquiry received. Our regional lead will contact you within 24 hours.',
+    concierge: {
+      button: 'Talk to Expert',
+      title: 'Live Strategy Assistant',
+      status: 'Connecting...',
+      listening: 'Listening...',
+      speaking: 'Assistant is speaking...',
+      error: 'Error occurred.',
+      close: 'Close Session'
     },
     legal: {
-      disclaimer: 'Nexoft is a marketing-first consultancy. Accounts-related services are provided solely as process guidance and advisory. We do not provide statutory audits or licensed accounting services.',
+      disclaimer: 'Nexoft is a social media marketing consultancy. Accounts-related services are advisory only. No statutory audit or certification services provided.',
+    },
+    contact: {
+      title: 'Let’s Talk.',
+      subtitle: 'Have a requirement? Connect with our team serving global clients from our regional hubs.',
+      name: 'Name',
+      email: 'Email',
+      phone: 'Phone / WhatsApp',
+      service: 'Requirement',
+      message: 'Brief',
+      submit: 'Contact Nexoft',
+      success: 'Inquiry received. We will respond within 24 hours.',
     }
   },
   ar: {
@@ -191,20 +175,47 @@ export const CONTENT = {
       pricing: 'الأسعار',
       contact: 'اتصل بنا',
     },
+    hero: {
+      title: 'تسويق استراتيجي متكامل.',
+      subtitle: 'تساعد نكسوفت الشركات على بناء حضور مهني ونتائج ملموسة. استراتيجية التواصل الاجتماعي مدعومة بتصميم مميز ودعم للأعمال.',
+      ctaPrimary: 'احصل على عرض سعر',
+      ctaSecondary: 'احجز استشارة',
+    },
+    services: {
+      title: 'ماذا نقدم',
+      subtitle: 'خدمات رقمية منظمة وعملية تركز على الانتشار والتفاعل والنمو المهني طويل الأمد.',
+      list: [
+        { id: 'smm', title: 'التسويق عبر وسائل التواصل', icon: 'BarChart3', description: 'إعداد الحسابات، تخطيط المحتوى، منشورات وفيديوهات قصيرة، تقارير الأداء. نركز على الظهور والتفاعل.' },
+        { id: 'design', title: 'تصميم المواقع والجرافيك', icon: 'Layout', description: 'مواقع الشركات وصفحات الهبوط. تصميم يدعم تناسق العلامة التجارية ومصداقيتها.' },
+        { id: 'software', title: 'توجيه البرامج والأدوات', icon: 'Settings', description: 'توجيه عملي لاختيار أنظمة العملاء وأدوات التسويق والبرامج المحاسبية مع تدريب على الإعداد.' },
+        { id: 'accounts', title: 'استشارات الحسابات', icon: 'FileText', description: 'إرشادات حول هيكلة فواتيرك وسير عمل النفقات. ملاحظة: استشارية فقط، لا نقدم تدقيقاً قانونياً.' },
+        { id: 'assistance', title: 'دعم الأعمال', icon: 'Users', description: 'دعم تشغيلي يشمل الإدارة، التوثيق، وتنسيق العملاء. دعم قابل للتوسع للفرق المتنامية.' },
+      ]
+    },
+    pricing: {
+      title: 'شفافية النمو',
+      subtitle: 'باقات مصممة للنمو. تعتمد التكلفة على النطاق والمنطقة والمتطلبات المحددة.',
+      startingFrom: 'تبدأ من',
+      note: 'الأسعار النهائية تعتمد على النطاق والدولة.',
+      plans: {
+        starter: 'البداية',
+        growth: 'النمو',
+        authority: 'التميز',
+        features: {
+          starter: ['تحسين الحساب', 'تخطيط المحتوى', 'تقارير أساسية'],
+          growth: ['إدارة قنوات موسعة', 'تكرار أعلى للمنشورات', 'استراتيجية تفاعل'],
+          authority: ['بناء هوية متميزة', 'محتوى يومي', 'بيانات أداء متقدمة'],
+        }
+      }
+    },
     intelligence: {
       title: 'ذكاء السوق',
       badge: 'بحث مباشر',
-      subtitle: 'احصل على أحدث اتجاهات السوق ورؤى المنافسين باستخدام بحث جوجل المدمج.',
+      subtitle: 'احصل على أحدث اتجاهات السوق في الهند والولايات المتحدة والخليج.',
       placeholder: 'ابحث عن الاتجاهات...',
       button: 'جلب المعلومات',
-      loading: 'جاري البحث في الشبكات العالمية...',
-      sources: 'المصادر الموثوقة',
-    },
-    hero: {
-      title: 'استراتيجية اجتماعية عالمية. تنفيذ مؤسسي.',
-      subtitle: 'وكالة رائدة تركز على التسويق عبر وسائل التواصل الاجتماعي، تساعد العلامات التجارية على التوسع من خلال الإبداع المدعوم بالبيانات.',
-      ctaPrimary: 'احصل على عرض سعر',
-      ctaSecondary: 'خدماتنا',
+      loading: 'جاري البحث...',
+      sources: 'المصادر',
     },
     creative: {
       title: 'استوديو الإبداع',
@@ -221,42 +232,30 @@ export const CONTENT = {
       placeholder: 'صف حركة المشهد والمزاج العام...',
       button: 'توليد الفيديو',
       loading: 'جاري تأليف الإطارات...',
-      keyWarning: 'توليد الفيديو عالي الجودة يتطلب مفتاح API مدفوع لنماذج Veo.',
-      selectKey: 'ربط مشروع الفوترة',
     },
     lab: {
       title: 'مختبر الاستراتيجية',
-      badge: 'مدعوم بالذكاء الاصطناعي',
-      subtitle: 'قم بإنشاء خارطة طريق لنمو وسائل التواصل الاجتماعي على الفور.',
-      inputPlaceholder: 'أدخل مجال عملك...',
+      badge: 'هندسة',
+      subtitle: 'أنشئ خارطة طريق لنمو علامتك التجارية بناءً على مجالك الخاص.',
+      inputPlaceholder: 'أدخل مجال عملك (مثل العقارات)...',
       button: 'توليد الاستراتيجية',
-      loading: 'جاري هندسة الرؤية...',
-      disclaimer: 'الرؤى التي تم إنشاؤها هي لأغراض استشارية بناءً على الاتجاهات العالمية الحالية.'
+      loading: 'جاري التصميم...',
+      disclaimer: 'نتائج استشارية مبنية على التوجهات العالمية.'
     },
     stack: {
       title: 'مستشار البرامج',
-      badge: 'تحسين الأداء',
-      subtitle: 'اكتشف الحزمة البرمجية المثالية لعملياتك التسويقية.',
+      badge: 'تحسين',
+      subtitle: 'حدد الحزمة البرمجية المثالية لفريقك وأهدافك التشغيلية.',
       teamSize: 'حجم الفريق',
-      goal: 'الهدف الأساسي',
-      budget: 'الميزانية الشهرية',
+      goal: 'الهدف',
+      budget: 'الميزانية',
       button: 'تحليل البرامج',
-      loading: 'جاري هندسة الحل...',
-      disclaimer: 'التوصيات محايدة للموردين وتستند إلى الكفاءة التشغيلية.'
-    },
-    concierge: {
-      button: 'تحدث مع خبير',
-      title: 'مساعد الاستراتيجية المباشر',
-      status: 'جارٍ الاتصال بذكاء نكسوفت...',
-      listening: 'جارٍ الاستماع...',
-      speaking: 'المساعد يتحدث الآن...',
-      error: 'مطلوب الوصول إلى الميكروفون للتفاعل الصوتي.',
-      close: 'إغلاق الجلسة'
+      loading: 'جاري التخطيط...',
+      disclaimer: 'توصيات محايدة تماماً.'
     },
     portfolio: {
       title: 'قصص النجاح',
       subtitle: 'تأثير ملموس تم تحقيقه عبر صناعات عالمية متنوعة.',
-      cta: 'عرض دراسة الحالة',
       cases: [
         { 
           id: 'lux-real-estate', 
@@ -284,46 +283,28 @@ export const CONTENT = {
         }
       ]
     },
-    services: {
-      title: 'خدماتنا العالمية',
-      subtitle: 'حلول رقمية متخصصة للعلامات التجارية الطموحة.',
-      list: [
-        { id: 'smm', title: 'التسويق عبر وسائل التواصل الاجتماعي', description: 'استراتيجية شاملة وإنتاج محتوى وإدارة مجتمع تركز على العائد على الاستثمار. فرقنا تستخدم البيانات المباشرة لتعديل الاستراتيجيات فوراً. نضمن بقاء علامتك التجارية في طليعة الحوار الرقمي العالمي.', icon: 'BarChart3' },
-        { id: 'design', title: 'تصميم المواقع والجرافيك', description: 'تجارب ويب محسنة للتحويل وأنظمة هوية بصرية متميزة للعلامة التجارية. نمزج الجماليات الراقية مع التميز التقني. تصاميمنا مصممة لتردد صداها عبر المناظر الثقافية المتنوعة.', icon: 'Layout' },
-        { id: 'software', title: 'توجيه البرامج والأدوات', description: 'اختيار استراتيجي للأدوات لإدارة علاقات العملاء وأتمتة التسويق والعمليات. نحدد الأدوات الأكثر كفاءة لاحتياجات السوق الخاصة بك. نهجنا يقلل من الاحتكاك التشغيلي.', icon: 'Settings' },
-        { id: 'accounts', title: 'توجيه عمليات الحسابات', description: 'استشارات حول سير العمل المالي والتقارير. ملاحظة: نحن لسنا شركة محاسبة قانونية. نقوم بتبسيط المنطق المحاسبي الداخلي لدعم التوسع الدولي السريع.', icon: 'FileText' },
-        { id: 'assistance', title: 'مساعدة الأعمال', description: 'دعم افتراضي رفيع المستوى لتبسيط عملياتك التنفيذية. مساعدونا مدربون على إدارة المشاريع على مستوى المؤسسات. نوفر العمود الفقري التشغيلي المطلوب للهيمنة على السوق.', icon: 'Users' },
-      ]
-    },
-    pricing: {
-      title: 'قابلية توسع شفافة',
-      subtitle: 'باقات مصممة للنمو عبر الأسواق العالمية.',
-      startingFrom: 'تبدأ من',
-      note: 'الأسعار الإقليمية معدلة حسب تعقيد السوق.',
-      plans: {
-        starter: 'البداية',
-        growth: 'النمو',
-        authority: 'التميز',
-        features: {
-          starter: ['3 قنوات اجتماعية', '12 منشوراً شهرياً', 'تحليلات أساسية'],
-          growth: ['5 قنوات اجتماعية', '24 منشوراً شهرياً', 'إدارة الإعلانات', 'التفاعل'],
-          authority: ['قنوات غير محدودة', 'محتوى يومي', 'التواصل مع المؤثرين', 'مدير مخصص'],
-        }
-      }
-    },
-    contact: {
-      title: 'شراكة عالمية',
-      subtitle: 'تواصل مع خبرائنا الإقليميين لبدء توسيع علامتك التجارية.',
-      name: 'الاسم الكامل',
-      email: 'البريد الإلكتروني للشركة',
-      phone: 'رقم الهاتف',
-      service: 'الخدمة المطلوبة',
-      message: 'ملخص المشروع',
-      submit: 'بدء الاستفسار',
-      success: 'تم استلام الاستفسار. سيتواصل معك مسؤولنا الإقليمي خلال 24 ساعة.',
+    concierge: {
+      button: 'تحدث مع خبير',
+      title: 'مساعد الاستراتيجية المباشر',
+      status: 'جارٍ الاتصال...',
+      listening: 'جارٍ الاستماع...',
+      speaking: 'المساعد يتحدث الآن...',
+      error: 'حدث خطأ.',
+      close: 'إغلاق الجلسة'
     },
     legal: {
-      disclaimer: 'نكسوفت هي استشارية تسويق أولاً. تُقدم الخدمات المتعلقة بالحسابات فقط كإرشادات واستشارات للعمليات.',
+      disclaimer: 'نكسوفت هي استشارية تسويق. الخدمات المحاسبية استشارية فقط ولا نقدم تدقيقاً حسابياً قانونياً.',
+    },
+    contact: {
+      title: 'تحدث معنا.',
+      subtitle: 'لديك متطلبات؟ تواصل مع فريقنا الذي يخدم العملاء العالميين من مراكزنا الإقليمية.',
+      name: 'الاسم',
+      email: 'البريد الإلكتروني',
+      phone: 'الهاتف / واتساب',
+      service: 'المتطلب',
+      message: 'نبذة',
+      submit: 'اتصل بنكسوفت',
+      success: 'تم استلام الاستفسار. سنرد عليك خلال 24 ساعة.',
     }
   }
 };

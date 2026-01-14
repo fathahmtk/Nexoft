@@ -2,8 +2,12 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
     <title>Nexoft | Global Social Marketing Enterprise</title>
+    <script>
+      // CRITICAL: Global process shim must be defined before any other modules load
+      window.process = { env: { API_KEY: '' } };
+    </script>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,12 +22,16 @@
         -moz-osx-font-smoothing: grayscale;
         background-color: #ffffff;
         color: #0f172a;
+        overflow-x: hidden;
       }
-      /* Hide custom cursor by default on all devices to ensure no early white screen blocks */
+      
+      /* Disable custom cursor by default */
       #nexoft-lens, #nexoft-lens-aura {
         display: none;
+        pointer-events: none;
       }
-      /* Enable custom cursor only on desktop/pointing devices */
+
+      /* Enable custom cursor ONLY on devices with precise pointing (mouse) */
       @media (pointer: fine) {
         body {
           cursor: none;
@@ -32,6 +40,7 @@
           display: block;
         }
       }
+
       .rtl {
         direction: rtl;
         font-family: 'Noto Sans Arabic', 'Plus Jakarta Sans', sans-serif;
@@ -40,13 +49,15 @@
         direction: ltr;
         font-family: 'Plus Jakarta Sans', 'Noto Sans Arabic', sans-serif;
       }
+      
       * {
         transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
         transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
         transition-duration: 400ms;
       }
+
       ::-webkit-scrollbar {
-        width: 6px;
+        width: 4px;
       }
       ::-webkit-scrollbar-track {
         background: #ffffff;
@@ -54,10 +65,7 @@
       ::-webkit-scrollbar-thumb {
         background: #e2e8f0;
       }
-      ::selection {
-        background: #2563eb;
-        color: #ffffff;
-      }
+
       body::before {
         content: "";
         position: fixed;
@@ -70,13 +78,13 @@
         opacity: 0.05;
         background-image: url("https://grainy-gradients.vercel.app/noise.svg");
       }
+
       #nexoft-lens {
         width: 12px;
         height: 12px;
         background: #2563eb;
         border-radius: 50%;
         position: fixed;
-        pointer-events: none;
         z-index: 10000;
         transition: transform 0.08s ease-out, width 0.3s cubic-bezier(0.16, 1, 0.3, 1), height 0.3s cubic-bezier(0.16, 1, 0.3, 1);
       }
@@ -88,10 +96,10 @@
         backdrop-filter: blur(2px);
         border-radius: 50%;
         position: fixed;
-        pointer-events: none;
         z-index: 9999;
         transition: transform 0.15s ease-out;
       }
+
       .glass-card {
         background: rgba(255, 255, 255, 0.7);
         backdrop-filter: blur(20px);
@@ -102,11 +110,14 @@
         backdrop-filter: blur(30px);
         border: 1px solid rgba(255, 255, 255, 0.1);
       }
+      
+      /* Mobile text adjustments */
+      @media (max-width: 640px) {
+        .mobile-tight-leading {
+          line-height: 1.1 !important;
+        }
+      }
     </style>
-    <script>
-      // Global process shim to prevent 'process is not defined' errors
-      window.process = window.process || { env: { API_KEY: '' } };
-    </script>
     <script type="importmap">
     {
       "imports": {
@@ -129,16 +140,20 @@
     <script>
       const lens = document.getElementById('nexoft-lens');
       const aura = document.getElementById('nexoft-lens-aura');
-      if (lens && aura) {
+      
+      // Only run mouse tracking if cursor is enabled (desktop)
+      if (window.matchMedia("(pointer: fine)").matches) {
         document.addEventListener('mousemove', (e) => {
-          lens.style.transform = `translate3d(${e.clientX - 6}px, ${e.clientY - 6}px, 0)`;
-          aura.style.transform = `translate3d(${e.clientX - 20}px, ${e.clientY - 20}px, 0)`;
-          const target = e.target;
-          if (target && target.closest && (target.closest('a') || target.closest('button'))) {
-            lens.style.width = '30px'; lens.style.height = '30px';
-            lens.style.transform = `translate3d(${e.clientX - 15}px, ${e.clientY - 15}px, 0)`;
-          } else {
-            lens.style.width = '12px'; lens.style.height = '12px';
+          if (lens && aura) {
+            lens.style.transform = `translate3d(${e.clientX - 6}px, ${e.clientY - 6}px, 0)`;
+            aura.style.transform = `translate3d(${e.clientX - 20}px, ${e.clientY - 20}px, 0)`;
+            const target = e.target;
+            if (target && target.closest && (target.closest('a') || target.closest('button'))) {
+              lens.style.width = '30px'; lens.style.height = '30px';
+              lens.style.transform = `translate3d(${e.clientX - 15}px, ${e.clientY - 15}px, 0)`;
+            } else {
+              lens.style.width = '12px'; lens.style.height = '12px';
+            }
           }
         });
       }
