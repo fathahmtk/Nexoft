@@ -1,0 +1,7 @@
+{
+  "name": "Nexoft - Global Social Media Marketing",
+  "description": "Premium multi-country social media marketing agency website with dynamic pricing, bilingual support (English/Arabic), and enterprise-grade UI.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
